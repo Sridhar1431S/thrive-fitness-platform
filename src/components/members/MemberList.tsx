@@ -1,11 +1,8 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Member } from '@/lib/data';
 import MemberCard from './MemberCard';
-import { Plus, Search } from 'lucide-react';
 
 interface MemberListProps {
   members: Member[];
@@ -14,22 +11,7 @@ interface MemberListProps {
 const MemberList: React.FC<MemberListProps> = ({ members }) => {
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between mb-6 gap-4">
-        <div className="flex-grow">
-          <h1 className="text-2xl font-bold mb-1">Members</h1>
-          <p className="text-muted-foreground">Manage your gym members</p>
-        </div>
-        <Button className="bg-gym-primary hover:bg-gym-primary/90">
-          <Plus className="h-5 w-5 mr-2" />
-          Add Member
-        </Button>
-      </div>
-      
       <div className="mb-6 flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Search members..." className="pl-9" />
-        </div>
         <div className="w-full sm:w-40">
           <Select defaultValue="all">
             <SelectTrigger>
@@ -59,9 +41,13 @@ const MemberList: React.FC<MemberListProps> = ({ members }) => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {members.map((member) => (
-          <MemberCard key={member.id} member={member} />
-        ))}
+        {members.length > 0 ? (
+          members.map((member) => (
+            <MemberCard key={member.id} member={member} />
+          ))
+        ) : (
+          <p className="text-muted-foreground col-span-full text-center py-8">No members found. Try adjusting your search.</p>
+        )}
       </div>
     </div>
   );
