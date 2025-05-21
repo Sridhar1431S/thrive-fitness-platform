@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,8 @@ interface MemberCardProps {
 }
 
 const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
+  const navigate = useNavigate();
+  
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
@@ -29,6 +32,10 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
     .join('')
     .toUpperCase();
 
+  const handleViewProfile = () => {
+    navigate(`/members/${member.id}`);
+  };
+
   return (
     <Card className="card-hover">
       <CardContent className="p-6">
@@ -46,7 +53,9 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
               <span className="font-medium">Membership:</span> {member.membershipType}
             </p>
             <div className="flex items-center mt-3 pt-3 border-t border-border">
-              <Button variant="outline" size="sm" className="text-xs mr-2">View Profile</Button>
+              <Button variant="outline" size="sm" className="text-xs mr-2" onClick={handleViewProfile}>
+                View Profile
+              </Button>
               <Button variant="outline" size="sm" className="text-xs">Check In</Button>
             </div>
           </div>

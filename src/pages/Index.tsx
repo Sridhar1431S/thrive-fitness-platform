@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import StatsCard from '@/components/dashboard/StatsCard';
@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('dashboard');
   
   // Create recent activity data from our mock data
@@ -49,9 +50,18 @@ const Index = () => {
     }))
   ].sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()).slice(0, 6);
 
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    
+    // Navigate based on tab selection
+    if (value !== 'dashboard') {
+      navigate(`/${value.toLowerCase()}`);
+    }
+  };
+
   return (
     <div className="container mx-auto max-w-7xl">
-      <Tabs defaultValue="dashboard" value={activeTab} onValueChange={setActiveTab}>
+      <Tabs defaultValue="dashboard" value={activeTab} onValueChange={handleTabChange}>
         <TabsList className="mb-8">
           <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
           <TabsTrigger value="members">Members</TabsTrigger>
@@ -137,58 +147,50 @@ const Index = () => {
               <div>
                 <h2 className="section-title">Quick Actions</h2>
                 <div className="space-y-3">
-                  <Link to="/members">
-                    <Card className="card-hover">
-                      <CardContent className="flex items-center justify-between p-3">
-                        <div className="flex items-center">
-                          <div className="rounded-full p-2 bg-gym-primary/10 mr-3">
-                            <Users className="h-5 w-5 text-gym-primary" />
-                          </div>
-                          <span>Add Member</span>
+                  <Card className="card-hover cursor-pointer" onClick={() => navigate('/members')}>
+                    <CardContent className="flex items-center justify-between p-3">
+                      <div className="flex items-center">
+                        <div className="rounded-full p-2 bg-gym-primary/10 mr-3">
+                          <Users className="h-5 w-5 text-gym-primary" />
                         </div>
-                        <span className="text-lg">→</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link to="/trainers">
-                    <Card className="card-hover">
-                      <CardContent className="flex items-center justify-between p-3">
-                        <div className="flex items-center">
-                          <div className="rounded-full p-2 bg-gym-secondary/10 mr-3">
-                            <UserCheck className="h-5 w-5 text-gym-secondary" />
-                          </div>
-                          <span>Add Trainer</span>
+                        <span>Add Member</span>
+                      </div>
+                      <span className="text-lg">→</span>
+                    </CardContent>
+                  </Card>
+                  <Card className="card-hover cursor-pointer" onClick={() => navigate('/trainers')}>
+                    <CardContent className="flex items-center justify-between p-3">
+                      <div className="flex items-center">
+                        <div className="rounded-full p-2 bg-gym-secondary/10 mr-3">
+                          <UserCheck className="h-5 w-5 text-gym-secondary" />
                         </div>
-                        <span className="text-lg">→</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link to="/workouts">
-                    <Card className="card-hover">
-                      <CardContent className="flex items-center justify-between p-3">
-                        <div className="flex items-center">
-                          <div className="rounded-full p-2 bg-gym-accent/10 mr-3">
-                            <Dumbbell className="h-5 w-5 text-gym-accent" />
-                          </div>
-                          <span>Create Workout</span>
+                        <span>Add Trainer</span>
+                      </div>
+                      <span className="text-lg">→</span>
+                    </CardContent>
+                  </Card>
+                  <Card className="card-hover cursor-pointer" onClick={() => navigate('/workouts')}>
+                    <CardContent className="flex items-center justify-between p-3">
+                      <div className="flex items-center">
+                        <div className="rounded-full p-2 bg-gym-accent/10 mr-3">
+                          <Dumbbell className="h-5 w-5 text-gym-accent" />
                         </div>
-                        <span className="text-lg">→</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link to="/payments">
-                    <Card className="card-hover">
-                      <CardContent className="flex items-center justify-between p-3">
-                        <div className="flex items-center">
-                          <div className="rounded-full p-2 bg-gym-success/10 mr-3">
-                            <CreditCard className="h-5 w-5 text-gym-success" />
-                          </div>
-                          <span>Record Payment</span>
+                        <span>Create Workout</span>
+                      </div>
+                      <span className="text-lg">→</span>
+                    </CardContent>
+                  </Card>
+                  <Card className="card-hover cursor-pointer" onClick={() => navigate('/payments')}>
+                    <CardContent className="flex items-center justify-between p-3">
+                      <div className="flex items-center">
+                        <div className="rounded-full p-2 bg-gym-success/10 mr-3">
+                          <CreditCard className="h-5 w-5 text-gym-success" />
                         </div>
-                        <span className="text-lg">→</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
+                        <span>Record Payment</span>
+                      </div>
+                      <span className="text-lg">→</span>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>

@@ -9,6 +9,15 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/layout/Navbar";
 import Sidebar from "./components/layout/Sidebar";
+import MembersPage from "./pages/MembersPage";
+import TrainersPage from "./pages/TrainersPage";
+import WorkoutsPage from "./pages/WorkoutsPage";
+import ClassesPage from "./pages/ClassesPage";
+import PaymentsPage from "./pages/PaymentsPage";
+import ReportsPage from "./pages/ReportsPage";
+import SettingsPage from "./pages/SettingsPage";
+import MemberProfilePage from "./pages/MemberProfilePage";
+import TrainerProfilePage from "./pages/TrainerProfilePage";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +43,15 @@ const App = () => {
               <main className="flex-grow p-6 lg:pl-6 mt-16">
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/members" element={<MembersPage />} />
+                  <Route path="/trainers" element={<TrainersPage />} />
+                  <Route path="/classes" element={<ClassesPage />} />
+                  <Route path="/workouts" element={<WorkoutsPage />} />
+                  <Route path="/payments" element={<PaymentsPage />} />
+                  <Route path="/reports" element={<ReportsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/members/:memberId" element={<MemberProfilePage />} />
+                  <Route path="/trainers/:trainerId" element={<TrainerProfilePage />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,8 @@ interface TrainerCardProps {
 }
 
 const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
+  const navigate = useNavigate();
+  
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
@@ -26,6 +29,10 @@ const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
     .map((n) => n[0])
     .join('')
     .toUpperCase();
+
+  const handleViewProfile = () => {
+    navigate(`/trainers/${trainer.id}`);
+  };
 
   return (
     <Card className="card-hover">
@@ -47,7 +54,9 @@ const TrainerCard: React.FC<TrainerCardProps> = ({ trainer }) => {
               {trainer.bio}
             </div>
             <div className="flex items-center mt-3 pt-3 border-t border-border">
-              <Button variant="outline" size="sm" className="text-xs mr-2">View Profile</Button>
+              <Button variant="outline" size="sm" className="text-xs mr-2" onClick={handleViewProfile}>
+                View Profile
+              </Button>
               <Button variant="outline" size="sm" className="text-xs">Schedule</Button>
             </div>
           </div>
