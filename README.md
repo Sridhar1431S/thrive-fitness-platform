@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+Thrive Fitness Platform
+Thrive Fitness Platform is a comprehensive, full-stack web application designed to streamline gym management and enhance user engagement. It offers distinct functionalities for Admins, Trainers, and Members, facilitating seamless class scheduling, trainer management, and member participation.
+GitHub
 
-## Project info
+🚀 Features
+Role-Based Access Control: Distinct dashboards and permissions for Admins, Trainers, and Members.
 
-**URL**: https://lovable.dev/projects/2863ddaa-88d7-4829-909d-b764d770dd31
+Class Management: Admins can create, update, and delete fitness classes.
 
-## How can I edit this code?
+Trainer Scheduling: Trainers can manage their availability and class schedules.
 
-There are several ways of editing your application.
+Member Enrollment: Members can browse classes, book sessions, and track their fitness journey.
 
-**Use Lovable**
+Responsive Design: Optimized for desktops, tablets, and mobile devices.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2863ddaa-88d7-4829-909d-b764d770dd31) and start prompting.
+Secure Authentication: Robust login system ensuring data privacy and security.
+GitHub
 
-Changes made via Lovable will be committed automatically to this repo.
+🛠️ Tech Stack
+Frontend: React.js, Tailwind CSS
 
-**Use your preferred IDE**
+Backend: Node.js, Express.js
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Database: MongoDB
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Authentication: JWT (JSON Web Tokens)
 
-Follow these steps:
+Version Control: Git & GitHub
+GitHub
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+📦 Installation
+Clone the repository:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+git clone https://github.com/Sridhar1431S/thrive-fitness-platform.git
+cd thrive-fitness-platform
+Install dependencies:
 
-# Step 3: Install the necessary dependencies.
-npm i
+npm install
+Configure environment variables:
+Create a .env file in the root directory and add the following:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+Start the application:
 
-**Edit a file directly in GitHub**
+npm start
+The application will run on http://localhost:5000.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+📁 Project Structure
 
-**Use GitHub Codespaces**
+thrive-fitness-platform/
+├── client/                 # Frontend source code
+├── server/                 # Backend source code
+├── .env                    # Environment variables
+├── package.json            # Project metadata and scripts
+└── README.md               # Project documentation
+✅ Usage
+Admin:
+Manage trainers and members
+Create and schedule classes
+Monitor platform analytics
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Trainer:
+Set availability
+Manage assigned classes
+Interact with enrolled members
 
-## What technologies are used for this project?
+Member:
+Browse available classes
+Book and manage class enrollments
+Track personal fitness progress
 
-This project is built with:
+🤝 Contributing
+Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss what you would like to change.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+📄 License
+This project is licensed under the MIT License.
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2863ddaa-88d7-4829-909d-b764d770dd31) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+📬 Contact
+For inquiries or feedback, please contact Sridhar1431S.
